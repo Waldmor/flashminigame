@@ -1,0 +1,77 @@
+import flash.events.KeyboardEvent;
+import flash.ui.Keyboard;
+import flash.events.Event;
+
+stage.addEventListener(KeyboardEvent.KEY_DOWN,hareket);
+stage.addEventListener(Event.ENTER_FRAME,game);
+function game(e:Event):void
+{
+	if(Oyuncu1.hitTestObject(bitis))
+	{
+		sayi=0;
+		yazi.text="Kazanan Kız Oyuncu";
+		stop();
+	}
+	if(Oyuncu2.hitTestObject(bitis))
+	{
+		sayi=0;
+		yazi.text="Kazanan Erkek Oyuncu";
+		stop();
+	}
+}
+
+
+{
+	if(Oyuncu1.hitTestObject(engel))
+	{
+		sayi=0;
+		yazi.text="Kazanan Erkek Oyuncu";
+		stop();
+	}
+	if(Oyuncu2.hitTestObject(engel))
+	{
+		sayi=0;
+		yazi.text="Kazanan Kız Oyuncu";
+		stop();
+	}
+}
+
+var sayi:int=15;
+
+function hareket (e:KeyboardEvent):void
+{
+	if (e.keyCode==Keyboard.LEFT)
+	{
+		Oyuncu1.x-=sayi;
+		
+	}
+	if (e.keyCode==Keyboard.RIGHT)
+	{
+		Oyuncu1.x+=sayi;
+		
+	}
+	if (e.keyCode==Keyboard.UP)
+	{
+		Oyuncu1.y-=sayi;
+		
+	}
+	if (e.keyCode==Keyboard.DOWN)
+	{
+		Oyuncu1.y+=sayi;
+		
+	}
+}
+stage.addEventListener(KeyboardEvent.KEY_DOWN, klavye);
+ 
+function klavye(event: KeyboardEvent): void 
+{
+ 
+ if (event.keyCode == 65)
+ Oyuncu2.x -= sayi; 
+ if (event.keyCode == 68)
+ Oyuncu2.x += sayi;
+ if (event.keyCode == 87)
+ Oyuncu2.y -= sayi; 
+ if (event.keyCode == 83)
+ Oyuncu2.y += sayi; }
+
